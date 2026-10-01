@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    width: 800px;
+    margin: 30px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* khu vực tìm kiếm */
+form {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+input,
+select {
+    padding: 8px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+}
+
+input {
+    width: 250px;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* link */
+a {
+    text-decoration: none;
+    color: #3366cc;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* từng memo */
+.memo-box {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.memo-box h2 {
+    margin-top: 0;
+    color: #222;
+}
+
+.memo-box p {
+    margin: 8px 0;
+}
+
+.memo-box {
+    display: grid;
+
+    grid-template-columns: 150px 1fr 150px 150px;
+
+    grid-template-areas:
+        "title empty empty category"
+        "content content content content"
+        "buttons buttons created updated";
+
+    border: 1px solid #333;
+    margin-top: 20px;
+    background-color: white;
+}
+
+
+/* 제목 */
+.memo-title {
+    grid-area: title;
+
+    padding: 12px;
+    text-align: center;
+
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+
+    font-weight: bold;
+}
+
+
+/* 분류 */
+.memo-category {
+    grid-area: category;
+
+    padding: 12px;
+    text-align: center;
+
+    border-left: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+
+/* 내용 */
+.memo-content {
+    grid-area: content;
+
+    min-height: 100px;
+
+    padding: 20px;
+
+    border-bottom: 1px solid #333;
+}
+
+
+/* 수정 / 삭제 */
+.memo-buttons {
+    grid-area: buttons;
+
+    padding: 15px;
+}
+
+
+/* 작성일 */
+.memo-created {
+    grid-area: created;
+
+    padding: 10px;
+
+    text-align: center;
+
+    border-left: 1px solid #333;
+}
+
+
+/* 수정일 */
+.memo-updated {
+    grid-area: updated;
+
+    padding: 10px;
+
+    text-align: center;
+
+    border-left: 1px solid #333;
+}
+
+.form-box {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.form-box input,
+.form-box textarea,
+.form-box select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.form-box textarea {
+    height: 120px;
+}
+
+.form-box button {
+    padding: 8px 15px;
+    margin-top: 10px;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 웹페이지 제목 -->
+    <title>메모장 웹사이트</title>
+
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+
+    <!-- 메인 제목 -->
+    <h1>메모장 웹사이트</h1>
+
+
+    <!-- 메모 검색 form -->
+    <form method="GET" action="/">
+
+        <!-- 제목 검색어 입력 -->
+        <input
+            type="text"
+            name="search"
+            placeholder="제목 검색"
+            value="{{ search }}"
+        >
+
+        <!-- 메모 분류 선택 -->
+        <select name="category">
+
+            <!-- 전체 메모 -->
+            <option value="">전체</option>
+
+            <!-- 학교 분류 -->
+            <option value="학교"
+                {% if category == "학교" %}selected{% endif %}>
+                학교
+            </option>
+
+            <!-- 공부 분류 -->
+            <option value="공부"
+                {% if category == "공부" %}selected{% endif %}>
+                공부
+            </option>
+
+            <!-- 생활 분류 -->
+            <option value="생활"
+                {% if category == "생활" %}selected{% endif %}>
+                생활
+            </option>
+
+            <!-- 기타 분류 -->
+            <option value="기타"
+                {% if category == "기타" %}selected{% endif %}>
+                기타
+            </option>
+
+        </select>
+
+        <!-- 검색 버튼 -->
+        <button type="submit">검색</button>
+
+    </form>
+
+
+    <!-- 검색 조건 초기화 -->
+    <a href="/">전체 보기</a>
+
+
+    <!-- 새 메모 작성 페이지로 이동 -->
+    <p>
+        <a href="/add">새 메모 작성</a>
+    </p>
+
+    <hr>
+
+
+    <!-- Flask에서 받은 메모 목록 반복 -->
+    {% for memo in memos %}
+
+    <div class="memo-box">
+
+        <!-- 메모 제목 -->
+        <div class="memo-title">
+            {{ memo["title"] }}
+        </div>
+
+
+        <!-- 메모 분류 -->
+        <div class="memo-category">
+            {{ memo["category"] }}
+        </div>
+
+
+        <!-- 메모 내용 -->
+        <div class="memo-content">
+
+            {{ memo["content"] }}
+
+            <!-- 생활 메모일 때만 사용 금액 표시 -->
+            {% if memo["category"] == "생활" and memo["amount"] %}
+
+                <p>
+                    사용 금액: {{ memo["amount"] }}원
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- 수정 / 삭제 버튼 -->
+        <div class="memo-buttons">
+
+            <a href="/edit/{{ memo['id'] }}">수정</a>
+
+            <a href="/delete/{{ memo['id'] }}">삭제</a>
+
+        </div>
+
+
+        <!-- 작성 날짜 -->
+        <div class="memo-created">
+
+            작성일<br>
+
+            {{ memo["created_at"] }}
+
+        </div>
+
+
+        <!-- 마지막 수정 날짜 -->
+        <div class="memo-updated">
+
+            수정일<br>
+
+            {{ memo["updated_at"] }}
+
+        </div>
+
+    </div>
+
+    <!-- 반복문 끝 -->
+    {% endfor %}
+
+
+</body>
+</html>

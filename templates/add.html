@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- 페이지 제목 -->
+    <title>새 메모 작성</title>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="../static/show_Amount.js"></script>
+
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+
+<body>
+
+    <!-- 페이지 제목 -->
+    <h1>새 메모 작성</h1>
+
+    <!-- 새 메모 작성 form -->
+    <form method="POST" class="form-box">
+
+        <!-- 제목 입력 -->
+        <p>
+            <label>제목</label><br>
+            <input type="text" name="title" required>
+        </p>
+
+
+        <!-- 내용 입력 -->
+        <p>
+            <label>내용</label><br>
+            <textarea name="content" required></textarea>
+        </p>
+
+
+        <!-- 분류 선택 -->
+        <p>
+            <label>분류</label><br>
+
+            <select
+                name="category"
+                onchange="showAmount()"
+                id="category"
+            >
+                <option value="학교">학교</option>
+                <option value="공부">공부</option>
+                <option value="생활">생활</option>
+                <option value="기타">기타</option>
+            </select>
+        </p>
+
+
+        <!-- 생활을 선택했을 때만 표시 -->
+        <div id="amountBox" style="display: none;">
+
+            <p>
+                <label>사용 금액</label><br>
+
+                <input type="number" name="amount">
+            </p>
+
+        </div>
+
+
+        <!-- 입력한 메모 저장 -->
+        <button type="submit">저장</button>
+
+    </form>
+
+
+    <!-- 메인 페이지로 이동 -->
+    <p>
+        <a href="/">메인으로 돌아가기</a>
+    </p>
+
+</body>
+</html>
